@@ -6,6 +6,9 @@
 
 import {themes as prismThemes} from 'prism-react-renderer';
 
+// import 'prismjs/components/prism-cpp';
+
+
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 
@@ -191,6 +194,7 @@ const config = {
       prism: {
         theme: prismThemes.github,
         darkTheme: prismThemes.dracula,
+        additionalLanguages: ['powershell', 'cpp'],
       },
     }),
 };
