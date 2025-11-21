@@ -1,1 +1,4 @@
-mathIndex
+---
+sidebar_position: 1
+---
+# 数学
