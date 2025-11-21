@@ -23,7 +23,7 @@ const config = {
   url: 'https://github.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/mydocs/',
+  baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -75,6 +75,28 @@ const config = {
     ],
   ],
 
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'math',
+        path: 'math',
+        routeBasePath: 'math',
+        sidebarPath: require.resolve('./sidebarsMath.js'),
+      },
+    ],
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'algorithm',
+        path: 'algorithm',
+        routeBasePath: 'algorithm',
+        sidebarPath: require.resolve('./sidebarsAlgorithm.js'),
+      },
+    ],
+  ],
+
+
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
@@ -96,6 +118,8 @@ const config = {
             position: 'left',
             label: 'Tutorial',
           },
+          {to: '/algorithm', label: 'Algorithm', position: 'left'}, 
+          {to: '/math', label: 'Math', position: 'left'}, 
           {to: '/blog', label: 'Blog', position: 'left'},
           {
             href: 'https://github.com/facebook/docusaurus',
