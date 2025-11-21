@@ -6,6 +6,9 @@
 
 import {themes as prismThemes} from 'prism-react-renderer';
 
+import remarkMath from 'remark-math';
+import rehypeKatex from 'rehype-katex';
+
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 /** @type {import('@docusaurus/types').Config} */
@@ -51,7 +54,9 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/newfreespsace/mydocs/edit/main/',
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
         },
         blog: {
           showReadingTime: true,
@@ -62,8 +67,10 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
+            'https://github.com/newfreespsace/mydocs/edit/main/',
           // Useful options to enforce blogging best practices
+          remarkPlugins: [remarkMath],
+          rehypePlugins: [rehypeKatex],
           onInlineTags: 'warn',
           onInlineAuthors: 'warn',
           onUntruncatedBlogPosts: 'warn',
@@ -83,6 +90,10 @@ const config = {
         path: 'math',
         routeBasePath: 'math',
         sidebarPath: require.resolve('./sidebarsMath.js'),
+        editUrl:
+            'https://github.com/newfreespsace/mydocs/edit/main/',
+        remarkPlugins: [remarkMath],
+        rehypePlugins: [rehypeKatex],
       },
     ],
     [
@@ -92,6 +103,10 @@ const config = {
         path: 'algorithm',
         routeBasePath: 'algorithm',
         sidebarPath: require.resolve('./sidebarsAlgorithm.js'),
+        editUrl:
+            'https://github.com/newfreespsace/mydocs/edit/main/',
+        remarkPlugins: [remarkMath],
+        rehypePlugins: [rehypeKatex],
       },
     ],
   ],
@@ -178,6 +193,14 @@ const config = {
         darkTheme: prismThemes.dracula,
       },
     }),
+  stylesheets: [
+    {
+      href: 'https://cdn.jsdelivr.net/npm/katex@0.13.24/dist/katex.min.css',
+      type: 'text/css',
+      integrity: 'sha384-yfrC4RD5d0Xx48M7V0yB/B27t4S+nQ5D+4/p6eUv8pG/pGq3N9pC5r9n2d8l', // 这个值可能会随 KaTeX 版本变化
+      crossorigin: 'anonymous',
+    },
+  ],
 };
 
 export default config;
