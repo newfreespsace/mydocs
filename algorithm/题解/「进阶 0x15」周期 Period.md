@@ -5,7 +5,7 @@ $S[1 \sim n]$ 具有长度为 $len < n$ 的循环节的充要条件是 $S[len + 
 > 我们认为这种情况 $\text{ABCDABCDABCDABC}$ 存在循环节 $\text{ABCD}$ ，如果不认可这种情况，需检查字符串的长度是否是循环节长度的倍数。
 
 ### 证明
-![image-20231102094933055](C:\Users\Lee\OneDrive\笔记\算法学习\题解\assets\image-20231102094933055.png)
+![image-20231102094933055](assets\image-20231102094933055.png)
 
 $S[1 \sim n]$ 具有长度为 $len < n$ 的循环节 $\iff$ $S[x] = S[x + len](1 \le x \le n - len)$  
 
