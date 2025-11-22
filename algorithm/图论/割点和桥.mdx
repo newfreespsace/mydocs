@@ -1,0 +1,71 @@
+---
+sidebar_position: 1 
+---
+import img1 from './img/image-20251122064900793-1763767236561-1.png';
+import img2 from './img/屏幕截图 2025-11-22 080512.png';
+
+
+
+给出无向连通图 $G=(V, E)$：
+
+### 桥
+若对于 $e \in E$，从图中删去边 $e$ 之后，$G$ 分裂为两个不相连的子图，则称 $e$ 为 $G$ 的**桥**或者**割边**。
+### 割点
+
+若对于 $v \in E$，从图中删去节点 $x$ 以及所有与 $x$ 关联的边之后，$G$ 分裂成两个或两个以上不相连的子图，则称 $x$ 为 $G$ 的割点。
+
+下面的图中，哪些边是桥，哪些点是割点呢？
+
+
+<img src={img1} alt="图片" style={{ width: '300px' }} />
+<img src={img1} alt="图片" style={{ width: '300px' }} />
+<img src={img1} alt="图片" style={{ width: '300px' }} />
+
+通过观察，我们可以看到若图为一棵树，那么每条边都是割边，每个非叶子的节点和儿子节点不只一个的根节点都是割点。
+
+### 搜索树
+在无向连通图中，从任意一个节点出发进行深度优先遍历，每个点只访问一次，所有发生递归的边构成了一棵树，我们称其为“图的搜索树”。如果图不连通的话，那么得到的为每一个连通块的搜索树组成的“搜索树森林”。
+
+对于无向连通图来说，所有的非树边一定连接的是节点和其祖先节点。这样的边称为“回边“。
+
+### 树边和回边
+
+下图给出了一张无向连通图的搜索树的树边（红色）和回边（绿色）。
+<img src={img2} alt="图片" style={{ width: '500px' }} />
+
+### 时间戳
+在执行深度优先遍历的过程中，按照每个节点第一次被访问的顺序，依次将 $N$ 个节点用 $1 \sim N$ 的整数标记，该标记称为 ”时间戳“，一般用数组 $dfn[]$ (Discovery Time)记录该值。
+
+### 追溯值
+为了分析删掉一条边或者一个点以后，图是否依然保持连通，我们引入追溯值的概念。
+我们用 $low[u]$(Lowest Link) 表示从点 $u$ 或者以 $u$ 为根的 DFS 子树中任意一点出发，不经过到达 $u$ 的父边，能够到达的具有最小 `dfn` 值的点的 `dfn` 值。节点的 `low` 值称为追溯值。
+
+### tarjan 求割边算法
+在 DFS 遍历过程中，当访问到点 $x$ 的时候。
+1. 执行操作 low[x] = dfn[x]
+2. 枚举 $x$ 的出边 $(x, y)$。
+   * 若 $y$ 未曾访问过，递归访问 $y$，结束以后利用 $low[x] = min(low[x], low[y])$ 更新 $x$ 的追溯值，这是因为 $y$ 能访问到的点 $x$ 也可以访问到。
+
+
+
+
+
+
+<div style={{ color: 'red' }}>这是红色文字</div>
+
+
+<script src="https://giscus.app/client.js"
+        data-repo="newfreespsace/mydocs"
+        data-repo-id="R_kgDOQZP4HQ"
+        data-category="Announcements"
+        data-category-id="DIC_kwDOQZP4Hc4CyEVF"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="preferred_color_scheme"
+        data-lang="zh-CN"
+        crossorigin="anonymous"
+        async>
+</script>
